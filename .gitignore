@@ -1,0 +1,15 @@
+# react
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+# vscode
+./vscode/*
+.history/
+
+# env
+.DS_*
+*.env
+*.env.test
+
