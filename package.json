@@ -1,0 +1,26 @@
+{
+  "name": "playr",
+  "version": "1.0.0",
+  "repository": "git@github.com:jake-pauls/playr.git",
+  "author": "jake-pauls <jakepauls99@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "pretty": "prettier --write \"client/**/*.js\" \"server/**/*.js\"",
+    "pre-commit": "pretty-quick --staged"
+  },
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": true,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "bracketSpacing": true,
+    "arrowParens": "always"
+  }
+}

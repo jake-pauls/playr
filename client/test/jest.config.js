@@ -2,10 +2,9 @@ module.exports = {
   preset: 'jest-puppeteer',
   testRegex: './*\\.test\\.js$',
   globals: {
-    testingURL: "http://localhost:3000",
+    testingURL: 'http://localhost:3000',
   },
   transform: {
-    "\\.js$": "react-scripts/config/jest/babelTransform",
+    '\\.js$': 'react-scripts/config/jest/babelTransform',
   },
-}
-
+};

@@ -1,8 +1,9 @@
-# react
+# js
 *.log
 logs
 **/*.backup.*
 **/*.back.*
+node_modules/
 
 # vscode
 ./vscode/*

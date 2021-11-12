@@ -8,5 +8,4 @@ module.exports = {
     headless: process.env.HEADLESS !== 'false',
   },
   browserContext: 'default',
-}
-
+};
