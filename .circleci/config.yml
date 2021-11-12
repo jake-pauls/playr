@@ -1,0 +1,78 @@
+version: '2.1'
+
+orbs:
+  puppeteer: threetreeslight/puppeteer@0.1.2
+
+jobs:
+  client-build:
+    docker:
+      - image: 'circleci/node:16.13.0'
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - client-deps-{{ checksum "client/package.json" }}
+            - client-deps-
+
+      - run:
+          name: Install Required Dependencies
+          command: cd client && yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: client-deps-{{ checksum "client/package.json" }}
+
+      - run:
+          name: Run Client Build
+          command: cd client && yarn build
+
+  client-test:
+    docker:
+      - image: 'circleci/node:16.13.0'
+        environment:
+          NODE_ENV: development
+          HEADLESS: true
+
+    steps:
+      - checkout
+
+      # Install puppeteer and chromium driver for UI tests
+      - puppeteer/install
+
+      - run:
+          name: Install Additional Puppeteer Dependencies
+          command: sudo apt-get update && sudo apt-get install -y libgbm-dev
+
+      - restore_cache:
+          keys:
+            - client-deps-{{ checksum "client/package.json" }}
+            - client-deps-
+
+      - run:
+          name: Install Required Dependencies
+          command: cd client && yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: client-deps-{{ checksum "client/package.json" }}
+
+      - run:
+          name: Run Jest/Puppeteer Tests
+          command: cd client && yarn test
+
+workflows:
+  playr-ci:
+    jobs:
+      - client-build:
+          filters:
+            branches:
+              only: main
+      - client-test:
+          requires:
+            - client-build
+          filters:
+            branches:
+              only: main
