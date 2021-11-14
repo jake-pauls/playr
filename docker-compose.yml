@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # SERVER
+  server:
+    build: ./server
+    container_name: server
+    restart: always
+    ports:
+      - '4040:4040'
+    volumes:
+      - ./server:/app
+    links:
+      - mongo
+    depends_on:
+      - mongo
+
+  # MONGO
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    command: mongod
+    expose:
+      - 27017

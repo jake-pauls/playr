@@ -1,4 +1,4 @@
-import express, { Router, Request, Response } from 'express';
+import express, { Router } from 'express';
 import * as playtestController from '../controllers/playtest';
 
 const playtest: Router = express.Router();
