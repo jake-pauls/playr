@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "pretty": "prettier --write \"client/**/*.js\" \"server/**/*.js\"",
+    "pretty": "prettier --write \"client/**/*.js\" \"server/**/*.ts\"",
     "pre-commit": "pretty-quick --staged"
   },
   "devDependencies": {
@@ -14,13 +14,7 @@
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1"
   },
-  "prettier": {
-    "trailingComma": "es5",
-    "semi": true,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "quoteProps": "as-needed",
-    "bracketSpacing": true,
-    "arrowParens": "always"
+  "dependencies": {
+    "dotenv": "^10.0.0"
   }
 }
