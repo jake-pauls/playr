@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 import app from './app';
 
 const main = async () => {
-  config();
   const port: string | number = process.env.PORT || 4040;
 
-  let db;
-  try {
-    db = await mongoose.connect(`mongodb://${process.env.MONGO_HOST}:27017`);
+  // Load .env file into NODE_ENV
+  config();
 
-    console.log(`Connected to MongoDB on ${db}`);
+  try {
+    await mongoose.connect(`mongodb://${process.env.MONGO_HOST}:27017/playr`);
+    console.log(`Successfully connected to MongoDB!`);
   } catch (err) {
     console.log(err);
   }
