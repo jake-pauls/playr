@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  # CLIENT
+  client:
+    build: ./client
+    container_name: client
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client/src:/client/src
+
   # SERVER
   server:
     build: ./server
