@@ -15,7 +15,7 @@ function Dashboard() {
       templateColumns="repeat(9, 1fr)"
       >
         <GridItem rowSpan={1} colSpan={1}>
-          <Navbar navIndex={0}/>
+          <Navbar navIndex={0} />
         </GridItem>
         <GridItem rowSpan={1} colSpan={8}>
           <Flex
@@ -23,7 +23,7 @@ function Dashboard() {
           m={0}
           w="full"
           >
-            <Header/>
+            <Header name={"Dashboard"}/>
           </Flex>
         </GridItem>
       </Grid>

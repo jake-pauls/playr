@@ -23,7 +23,7 @@ function Playtest() {
           m={0}
           w="full"
           >
-            <Header/>
+            <Header name={"Playtest"}/>
           </Flex>
         </GridItem>
       </Grid>
