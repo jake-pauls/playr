@@ -1,0 +1,62 @@
+import React from "react";
+import {
+  chakra,
+  Flex,
+  useColorModeValue,
+  VisuallyHidden,
+  HStack,
+  InputGroup,
+  InputLeftElement,
+  Input,
+  Avatar
+} from "@chakra-ui/react";
+import {
+  AiOutlineSearch,
+  AiFillBell,
+} from "react-icons/ai";
+
+function Header() {
+  const bg = useColorModeValue("white", "gray.800");
+
+  return(
+    <chakra.header
+      bg={bg}
+      borderColor="gray.600"
+      borderBottomWidth={1}
+      w="full"
+      px={{ base: 2, sm: 4 }}
+      py={4}
+    >
+        
+      <Flex alignItems="center" justifyContent="end" mx="auto">
+        <HStack spacing={3} alignItems="center">
+          <InputGroup display={{ base: "none", lg: "block" }} ml="auto">
+            <InputLeftElement
+            pointerEvents="none"
+            children={<AiOutlineSearch />}
+            />
+            <Input type="tel" placeholder="Search..." />
+          </InputGroup>
+        </HStack>
+        
+        <HStack spacing={3}>
+          <chakra.a
+          p={3}
+          color={useColorModeValue("gray.800", "inherit")}
+          rounded="sm"
+          _hover={{ color: useColorModeValue("gray.800", "gray.600") }}
+          >
+          <AiFillBell />
+          <VisuallyHidden>Notifications</VisuallyHidden>
+          </chakra.a>
+          <Avatar
+          size="sm"
+          name="Dan Abrahmov"
+          src="https://bit.ly/dan-abramov"
+          />
+        </HStack>
+      </Flex>
+    </chakra.header>
+  );
+}
+export default Header;
