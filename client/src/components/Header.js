@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {
   chakra,
   Flex,
@@ -8,7 +9,8 @@ import {
   InputGroup,
   InputLeftElement,
   Input,
-  Avatar
+  Avatar,
+  Button,
 } from "@chakra-ui/react";
 import {
   AiOutlineSearch,
@@ -38,7 +40,14 @@ function Header() {
             <Input type="tel" placeholder="Search..." />
           </InputGroup>
         </HStack>
-        
+        <HStack spacing={3} alignItems="center" m={3}>
+          <Link
+            to="/newplaytest">
+            <Button>
+              + New PlayTest
+            </Button>
+          </Link>
+        </HStack>
         <HStack spacing={3}>
           <chakra.a
           p={3}

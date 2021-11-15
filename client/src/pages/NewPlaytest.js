@@ -31,12 +31,12 @@ export default function NewPlaytest() {
     <Box bg={useColorModeValue("gray.50", "inherit")}>
       <Grid
         templateRows="repeat(1, 1fr)"
-        templateColumns="repeat(5, 1fr)"
+        templateColumns="repeat(9, 1fr)"
       >
         <GridItem rowSpan={1} colSpan={1}>
           <Navbar/>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={4}>
+        <GridItem rowSpan={1} colSpan={8}>
           <Flex
           direction="column"
           m={0}
