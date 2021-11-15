@@ -5,8 +5,11 @@ logs
 **/*.back.*
 node_modules/
 
+# ts
+dist/
+
 # vscode
-./vscode/*
+.vscode
 .history/
 
 # env
