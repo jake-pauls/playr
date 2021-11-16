@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Link,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -68,7 +69,7 @@ const PlaytestModal = (props) => {
                 <Flex>
                   <Text fontWeight="bold">Build Link</Text>
                   <Spacer />
-                  <Text>{props.playtest.buildLink} </Text>
+                  <Link>{props.playtest.buildLink}</Link>
                 </Flex>
                 <AestheticsBadges playtest={props.playtest} />
               </Stack>
