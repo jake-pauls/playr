@@ -5,9 +5,9 @@ describe('default app test', () => {
     await page.goto(testingURL);
   });
 
-  it('contains the welcome text', async () => {
-    await page.waitForSelector('.App-welcome-text');
-    const text = await page.$eval('.App-welcome-text', (e) => e.textContent);
-    expect(text).toContain('Edit src/App.js and save to reload.');
+  it('contains the home text', async () => {
+    await page.waitForSelector('.hom');
+    const text = await page.$eval('.home', (e) => e.textContent);
+    expect(text).toContain('Home');
   });
 });
