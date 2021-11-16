@@ -43,7 +43,7 @@ const Header = (props) => {
           </HStack>
           <HStack spacing={3} alignItems="center" m={3}>
             <Link to="/newplaytest">
-              <Button>+ New PlayTest</Button>
+              <Button>+ New Playtest</Button>
             </Link>
           </HStack>
           <HStack spacing={3}>
