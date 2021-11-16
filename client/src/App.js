@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Playtest from './pages/Playtest';
 import NewPlaytest from './pages/NewPlaytest';
+import { chakraTheme } from './ui/theme';
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -13,7 +14,7 @@ const App = () => {
   return (
     <Container>
       <QueryClientProvider client={queryClient}>
-        <ChakraProvider>
+        <ChakraProvider theme={chakraTheme}>
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />

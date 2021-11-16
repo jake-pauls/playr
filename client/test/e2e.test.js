@@ -6,7 +6,7 @@ describe('default app test', () => {
   });
 
   it('contains the home text', async () => {
-    await page.waitForSelector('.hom');
+    await page.waitForSelector('.home');
     const text = await page.$eval('.home', (e) => e.textContent);
     expect(text).toContain('Home');
   });

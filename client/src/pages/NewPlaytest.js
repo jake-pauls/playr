@@ -31,7 +31,7 @@ const NewPlaytest = () => {
   const [buildLink, setBuildLink] = useState('');
   const [buildUpload, setBuildUpload] = useState(null);
 
-  const { status, refetch: sendPlaytest } = SendCreatePlaytest({
+  const { refetch: sendPlaytest } = SendCreatePlaytest({
     username: 'jake-pauls',
     gameName,
     instructions,

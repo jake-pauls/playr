@@ -29,7 +29,9 @@ const Header = (props) => {
     >
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
         <HStack spacing={3} alignItems="center">
-          <Heading size="md">{props.name}</Heading>
+          <Heading size="md" fontFamily="Raleway">
+            {props.name}
+          </Heading>
         </HStack>
         <HStack>
           <HStack spacing={3} alignItems="center">

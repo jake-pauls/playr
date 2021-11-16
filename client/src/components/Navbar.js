@@ -8,11 +8,11 @@ import {
   TabList,
   Tab,
 } from '@chakra-ui/react';
-import { AiFillPieChart, AiOutlineTeam } from 'react-icons/ai';
+import { AiFillPieChart, AiOutlineTeam, AiFillSetting } from 'react-icons/ai';
 
 const Navbar = (props) => {
   return (
-    <Flex bg="#363740" color="#A4A6B3" direction="column" h="full">
+    <Flex bg="base.black" color="base.grey" direction="column" h="full">
       <Flex alignItems="center">
         <Image
           src={`${process.env.PUBLIC_URL}/playr_logo.png`}
@@ -23,12 +23,13 @@ const Navbar = (props) => {
           mb={8}
           mr={6}
         />
-        <Heading>Playr.</Heading>
+        <Heading fontFamily="Raleway">Playr.</Heading>
       </Flex>
       <Tabs
         defaultIndex={props.navIndex}
         orientation="vertical"
-        borderColor="gray.600"
+        borderColor="base.grey"
+        colorScheme="green"
         m={0}
         w="full"
       >
@@ -38,7 +39,7 @@ const Navbar = (props) => {
               py={4}
               m={0}
               _focus={{ boxShadow: 'none' }}
-              borderLeftColor="lightgray"
+              borderLeftColor="base.grey"
               w="full"
               paddingRight={50}
             >
@@ -51,12 +52,12 @@ const Navbar = (props) => {
               py={4}
               m={0}
               _focus={{ boxShadow: 'none' }}
-              borderLeftColor="lightgray"
+              borderLeftColor="base.grey"
               w="full"
               paddingRight={50}
             >
               <Icon as={AiOutlineTeam} mr={14} />
-              Playtest
+              Playtests
             </Tab>
           </Link>
           <Tab
@@ -65,12 +66,13 @@ const Navbar = (props) => {
             _focus={{ boxShadow: 'none' }}
             borderTopWidth={1}
             mt={10}
-            borderTopColor="gray.600"
-            borderLeftColor="lightgray"
+            borderTopColor="base.grey"
+            borderLeftColor="base.grey"
             w="full"
             paddingRight={50}
           >
-            Setting
+            <Icon as={AiFillSetting} mr={14} />
+            Settings
           </Tab>
         </TabList>
       </Tabs>
