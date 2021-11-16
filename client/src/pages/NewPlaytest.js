@@ -12,15 +12,14 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  FormHelperText,
   Textarea,
-  Avatar,
   Icon,
   Button,
   VisuallyHidden,
   Grid,
+  InputLeftAddon,
+  InputRightAddon
 } from "@chakra-ui/react";
-import { FaUser } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header"
 
@@ -57,13 +56,13 @@ export default function NewPlaytest() {
                 p={{ sm: 6 }}
               >
                 <SimpleGrid columns={3} spacing={6}>
-                  <FormControl as={GridItem} colSpan={[3, 2]}>
+                  <FormControl as={GridItem} colSpan={[3, 2]} isRequired id="game_name">
                     <FormLabel
                       fontSize="sm"
                       fontWeight="md"
                       color={useColorModeValue("gray.700", "gray.50")}
                     >
-                      Gamename *
+                      Gamename
                     </FormLabel>
                     <InputGroup size="sm">
                       <Input
@@ -78,64 +77,112 @@ export default function NewPlaytest() {
                 </SimpleGrid>
 
                 <div>
-                  <FormControl id="email" mt={1}>
+                  <FormControl id="instruction" mt={1} isRequired>
                     <FormLabel
                       fontSize="sm"
                       fontWeight="md"
                       color={useColorModeValue("gray.700", "gray.50")}
                     >
-                      About
+                      Playtest Instructions
                     </FormLabel>
                     <Textarea
-                      placeholder="you@example.com"
+                      placeholder="Write Something"
                       mt={1}
-                      rows={3}
+                      rows={10}
                       shadow="sm"
                       focusBorderColor="brand.400"
                       fontSize={{ sm: "sm" }}
+                      required="true"
                     />
-                    <FormHelperText>
-                      Brief description for your profile. URLs are hyperlinked.
-                    </FormHelperText>
                   </FormControl>
                 </div>
 
-                <FormControl>
-                  <FormLabel
-                    fontSize="sm"
-                    fontWeight="md"
-                    color={useColorModeValue("gray.700", "gray.50")}
-                  >
-                    Photo
-                  </FormLabel>
-                  <Flex alignItems="center" mt={1}>
-                    <Avatar
-                      boxSize={12}
-                      bg={useColorModeValue("gray.100", "gray.800")}
-                      icon={
-                      <Icon
-                        as={FaUser}
-                        boxSize={9}
-                        mt={3}
-                        rounded="full"
-                        color={useColorModeValue("gray.300", "gray.700")}
-                      />
-                      }
-                    />
-                    <Button
-                      type="button"
-                      ml={5}
-                      variant="outline"
-                      size="sm"
-                      fontWeight="medium"
-                      _focus={{ shadow: "none" }}
-                    >
-                      Change
-                    </Button>
-                  </Flex>
+                
+                <FormControl id="start_end_date" isRequired>
+                  <SimpleGrid columns={3} spacing={6}>
+                    <Box>
+                      <FormLabel
+                      fontSize="sm"
+                      fontWeight="md"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                      >
+                        Start Date
+                      </FormLabel>
+                      <InputGroup>
+                        <Input
+                        type="date"
+                        focusBorderColor="brand.400"
+                        rounded="md"
+                        required="true"
+                        >
+                        </Input>
+                      </InputGroup>
+                    </Box>
+                    
+                    <Box>
+                      <FormLabel
+                        fontSize="sm"
+                        fontWeight="md"
+                        color={useColorModeValue("gray.700", "gray.50")}
+                      >
+                        End Date
+                      </FormLabel>
+                      <InputGroup>
+                        <Input
+                        type="date"
+                        focusBorderColor="brand.400"
+                        rounded="md"
+                        required="true"
+                        >
+                        </Input>
+                      </InputGroup>
+                    </Box>
+                  </SimpleGrid>
                 </FormControl>
 
-                <FormControl>
+                <FormControl id="aesthetics">
+                  <FormLabel
+                  fontSize="sm"
+                  fontWeight="md"
+                  color={useColorModeValue("gray.700", "gray.50")}
+                  >
+                    Aesthetics
+                  </FormLabel>
+                  <Input
+                    type="search"
+                    placeholder="Add..."
+                  >
+                  </Input>
+                  
+                </FormControl>
+                {/* <Tag
+                  size={"md"}
+                  key={"md"}
+                  borderRadius="full"
+                  variant="solid"
+                  colorScheme="green"
+                >
+                  <TagLabel>Green</TagLabel>
+                  <TagCloseButton />
+                </Tag> */}
+
+                <FormControl id="build">
+                  <FormLabel
+                  fontSize="sm"
+                  fontWeight="md"
+                  color={useColorModeValue("gray.700", "gray.50")}
+                  >
+                    Build Link
+                  </FormLabel>
+                  <InputGroup size="sm">
+                    <InputLeftAddon children="https://" />
+                    <Input placeholder="mysite" />
+                    <InputRightAddon children=".com" />
+                  </InputGroup>
+                  
+                </FormControl>
+
+                <FormControl id="file">
                   <FormLabel
                     fontSize="sm"
                     fontWeight="md"
