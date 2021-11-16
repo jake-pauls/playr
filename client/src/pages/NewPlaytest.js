@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   chakra,
   Box,
@@ -17,12 +17,31 @@ import {
   Button,
   VisuallyHidden,
   InputLeftAddon,
-  InputRightAddon,
 } from '@chakra-ui/react';
 
 import PageLayout from '../layouts/PageLayout';
+import { SendCreatePlaytest } from '../hooks/Queries';
 
 const NewPlaytest = () => {
+  const [gameName, setGameName] = useState('');
+  const [instructions, setInstructions] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [aesthetics, setAesthetics] = useState('');
+  const [buildLink, setBuildLink] = useState('');
+  const [buildUpload, setBuildUpload] = useState(null);
+
+  const { status, refetch: sendPlaytest } = SendCreatePlaytest({
+    username: 'jake-pauls',
+    gameName,
+    instructions,
+    startDate,
+    endDate,
+    aesthetics,
+    buildLink,
+    buildUpload,
+  });
+
   return (
     <PageLayout title="New Playtest">
       <chakra.form
@@ -30,6 +49,11 @@ const NewPlaytest = () => {
         shadow="base"
         rounded={[null, 'md']}
         overflow={{ sm: 'hidden' }}
+        encType="multipart/form-data"
+        onSubmit={(e) => {
+          e.preventDefault();
+          sendPlaytest();
+        }}
       >
         <Stack
           px={4}
@@ -50,20 +74,19 @@ const NewPlaytest = () => {
                 fontWeight="md"
                 color={useColorModeValue('gray.700', 'gray.50')}
               >
-                Gamename
+                Game Name
               </FormLabel>
               <InputGroup size="sm">
                 <Input
                   type="text"
-                  placeholder="Frostfire"
+                  placeholder="Enter an amazing game name"
                   focusBorderColor="brand.400"
                   rounded="md"
-                  required="true"
+                  onChange={(e) => setGameName(e.target.value)}
                 />
               </InputGroup>
             </FormControl>
           </SimpleGrid>
-
           <div>
             <FormControl id="instruction" mt={1} isRequired>
               <FormLabel
@@ -74,17 +97,16 @@ const NewPlaytest = () => {
                 Playtest Instructions
               </FormLabel>
               <Textarea
-                placeholder="Write Something"
+                placeholder="Write some instructions for users who playtest your game"
                 mt={1}
                 rows={10}
                 shadow="sm"
                 focusBorderColor="brand.400"
                 fontSize={{ sm: 'sm' }}
-                required="true"
+                onChange={(e) => setInstructions(e.target.value)}
               />
             </FormControl>
           </div>
-
           <FormControl id="start_end_date" isRequired>
             <SimpleGrid columns={3} spacing={6}>
               <Box>
@@ -100,11 +122,10 @@ const NewPlaytest = () => {
                     type="date"
                     focusBorderColor="brand.400"
                     rounded="md"
-                    required="true"
+                    onChange={(e) => setStartDate(e.target.value)}
                   ></Input>
                 </InputGroup>
               </Box>
-
               <Box>
                 <FormLabel
                   fontSize="sm"
@@ -118,13 +139,12 @@ const NewPlaytest = () => {
                     type="date"
                     focusBorderColor="brand.400"
                     rounded="md"
-                    required="true"
+                    onChange={(e) => setEndDate(e.target.value)}
                   ></Input>
                 </InputGroup>
               </Box>
             </SimpleGrid>
           </FormControl>
-
           <FormControl id="aesthetics">
             <FormLabel
               fontSize="sm"
@@ -133,34 +153,28 @@ const NewPlaytest = () => {
             >
               Aesthetics
             </FormLabel>
-            <Input type="search" placeholder="Add..."></Input>
+            <Input
+              type="search"
+              placeholder="ie: 'Challenge', 'Discovery', 'Submission', etc."
+              onChange={(e) => setAesthetics(e.target.value)}
+            ></Input>
           </FormControl>
-          {/* <Tag
-                  size={"md"}
-                  key={"md"}
-                  borderRadius="full"
-                  variant="solid"
-                  colorScheme="green"
-                >
-                  <TagLabel>Green</TagLabel>
-                  <TagCloseButton />
-                </Tag> */}
-
           <FormControl id="build">
             <FormLabel
               fontSize="sm"
               fontWeight="md"
               color={useColorModeValue('gray.700', 'gray.50')}
             >
-              Build Link
+              Build Link (GitHub, Itch.io, or Drive)
             </FormLabel>
             <InputGroup size="sm">
               <InputLeftAddon children="https://" />
-              <Input placeholder="mysite" />
-              <InputRightAddon children=".com" />
+              <Input
+                placeholder="github.com/user/game"
+                onChange={(e) => setBuildLink(e.target.value)}
+              />
             </InputGroup>
           </FormControl>
-
           <FormControl id="file">
             <FormLabel
               fontSize="sm"
@@ -213,12 +227,17 @@ const NewPlaytest = () => {
                       color: useColorModeValue('brand.400', 'brand.300'),
                     }}
                   >
-                    <span>Upload a file</span>
+                    <Text>Upload a file</Text>
                     <VisuallyHidden>
-                      <input id="file-upload" name="file-upload" type="file" />
+                      <input
+                        id="file-upload"
+                        name="file-upload"
+                        type="file"
+                        onChange={(e) => setBuildUpload(e.target.files[0])}
+                      />
                     </VisuallyHidden>
+                    <Text pl={1}>or drag and drop</Text>
                   </chakra.label>
-                  <Text pl={1}>or drag and drop</Text>
                 </Flex>
                 <Text
                   fontSize="xs"

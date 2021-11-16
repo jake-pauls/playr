@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Link,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -68,7 +69,7 @@ const PlaytestModal = (props) => {
                 <Flex>
                   <Text fontWeight="bold">Build Link</Text>
                   <Spacer />
-                  <Text>{props.playtest.buildLink} </Text>
+                  <Link>{props.playtest.buildLink}</Link>
                 </Flex>
                 <AestheticsBadges playtest={props.playtest} />
               </Stack>
@@ -77,10 +78,14 @@ const PlaytestModal = (props) => {
                   Playtest Dates
                 </Heading>
                 <Flex>
-                  <Text fontWeight="bold">Start Date</Text>
+                  <Text fontWeight="bold" mr={4}>
+                    Start Date
+                  </Text>
                   <Text>{formatDateString(props.playtest.startDate)}</Text>
                   <Spacer />
-                  <Text fontWeight="bold">End Date</Text>
+                  <Text fontWeight="bold" mr={4}>
+                    End Date
+                  </Text>
                   <Text>{formatDateString(props.playtest.endDate)}</Text>
                 </Flex>
                 <Flex>

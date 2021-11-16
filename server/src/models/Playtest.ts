@@ -15,7 +15,7 @@ const playtestSchema = new Schema<Playtest>(
     status: String,
     aesthetics: [{ type: String }],
     buildLink: String,
-    buildUpload: { type: Buffer, contentType: String },
+    buildUpload: Object,
   },
   {
     timestamps: true,

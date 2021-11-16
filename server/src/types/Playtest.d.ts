@@ -9,5 +9,5 @@ export default interface Playtest {
   status: string;
   aesthetics?: string[];
   buildLink?: string;
-  buildUpload?: Buffer;
+  buildUpload?: Object;
 }
