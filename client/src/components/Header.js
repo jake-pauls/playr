@@ -1,5 +1,5 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   chakra,
   Flex,
@@ -12,16 +12,13 @@ import {
   Avatar,
   Button,
   Heading,
-} from "@chakra-ui/react";
-import {
-  AiOutlineSearch,
-  AiFillBell,
-} from "react-icons/ai";
+} from '@chakra-ui/react';
+import { AiOutlineSearch, AiFillBell } from 'react-icons/ai';
 
-function Header(props) {
-  const bg = useColorModeValue("white", "gray.800");
+const Header = (props) => {
+  const bg = useColorModeValue('white', 'gray.800');
 
-  return(
+  return (
     <chakra.header
       bg={bg}
       borderColor="gray.600"
@@ -30,48 +27,44 @@ function Header(props) {
       px={{ base: 2, sm: 4 }}
       py={4}
     >
-        
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
         <HStack spacing={3} alignItems="center">
           <Heading size="md">{props.name}</Heading>
         </HStack>
         <HStack>
           <HStack spacing={3} alignItems="center">
-            <InputGroup >
+            <InputGroup>
               <InputLeftElement
-              pointerEvents="none"
-              children={<AiOutlineSearch />}
+                pointerEvents="none"
+                children={<AiOutlineSearch />}
               />
               <Input type="tel" placeholder="Search..." />
             </InputGroup>
           </HStack>
           <HStack spacing={3} alignItems="center" m={3}>
-            <Link
-              to="/newplaytest">
-              <Button>
-                + New PlayTest
-              </Button>
+            <Link to="/newplaytest">
+              <Button>+ New PlayTest</Button>
             </Link>
           </HStack>
           <HStack spacing={3}>
             <chakra.a
-            p={3}
-            color={useColorModeValue("gray.800", "inherit")}
-            rounded="sm"
-            _hover={{ color: useColorModeValue("gray.800", "gray.600") }}
+              p={3}
+              color={useColorModeValue('gray.800', 'inherit')}
+              rounded="sm"
+              _hover={{ color: useColorModeValue('gray.800', 'gray.600') }}
             >
-            <AiFillBell />
-            <VisuallyHidden>Notifications</VisuallyHidden>
+              <AiFillBell />
+              <VisuallyHidden>Notifications</VisuallyHidden>
             </chakra.a>
             <Avatar
-            size="sm"
-            name="Dan Abrahmov"
-            src="https://bit.ly/dan-abramov"
+              size="sm"
+              name="Dan Abrahmov"
+              src="https://bit.ly/dan-abramov"
             />
           </HStack>
         </HStack>
       </Flex>
     </chakra.header>
   );
-}
+};
 export default Header;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   chakra,
   Box,
@@ -19,40 +19,32 @@ import {
   Button,
   VisuallyHidden,
   Grid,
-} from "@chakra-ui/react";
-import { FaUser } from "react-icons/fa";
-import Navbar from "../components/Navbar";
-import Header from "../components/Header"
+} from '@chakra-ui/react';
+import { FaUser } from 'react-icons/fa';
+import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
-export default function NewPlaytest() {
+const NewPlaytest = () => {
   return (
-      
-    <Box bg={useColorModeValue("gray.50", "inherit")}>
-      <Grid
-        templateRows="repeat(1, 1fr)"
-        templateColumns="repeat(9, 1fr)"
-      >
+    <Box bg={useColorModeValue('gray.50', 'inherit')}>
+      <Grid templateRows="repeat(1, 1fr)" templateColumns="repeat(9, 1fr)">
         <GridItem rowSpan={1} colSpan={1}>
-          <Navbar/>
+          <Navbar />
         </GridItem>
         <GridItem rowSpan={1} colSpan={8}>
-          <Flex
-          direction="column"
-          m={0}
-          w="full"
-          >
-            <Header name={"New Playtest"}/>
+          <Flex direction="column" m={0} w="full">
+            <Header name={'New Playtest'} />
 
             <chakra.form
               method="POST"
               shadow="base"
-              rounded={[null, "md"]}
-              overflow={{ sm: "hidden" }}
+              rounded={[null, 'md']}
+              overflow={{ sm: 'hidden' }}
             >
               <Stack
                 px={4}
                 py={5}
-                bg={useColorModeValue("white", "gray.700")}
+                bg={useColorModeValue('white', 'gray.700')}
                 spacing={6}
                 p={{ sm: 6 }}
               >
@@ -61,17 +53,17 @@ export default function NewPlaytest() {
                     <FormLabel
                       fontSize="sm"
                       fontWeight="md"
-                      color={useColorModeValue("gray.700", "gray.50")}
+                      color={useColorModeValue('gray.700', 'gray.50')}
                     >
                       Gamename *
                     </FormLabel>
                     <InputGroup size="sm">
                       <Input
-                      type="text"
-                      placeholder="Frostfire"
-                      focusBorderColor="brand.400"
-                      rounded="md"
-                      required="true"
+                        type="text"
+                        placeholder="Frostfire"
+                        focusBorderColor="brand.400"
+                        rounded="md"
+                        required="true"
                       />
                     </InputGroup>
                   </FormControl>
@@ -82,7 +74,7 @@ export default function NewPlaytest() {
                     <FormLabel
                       fontSize="sm"
                       fontWeight="md"
-                      color={useColorModeValue("gray.700", "gray.50")}
+                      color={useColorModeValue('gray.700', 'gray.50')}
                     >
                       About
                     </FormLabel>
@@ -92,7 +84,7 @@ export default function NewPlaytest() {
                       rows={3}
                       shadow="sm"
                       focusBorderColor="brand.400"
-                      fontSize={{ sm: "sm" }}
+                      fontSize={{ sm: 'sm' }}
                     />
                     <FormHelperText>
                       Brief description for your profile. URLs are hyperlinked.
@@ -104,22 +96,22 @@ export default function NewPlaytest() {
                   <FormLabel
                     fontSize="sm"
                     fontWeight="md"
-                    color={useColorModeValue("gray.700", "gray.50")}
+                    color={useColorModeValue('gray.700', 'gray.50')}
                   >
                     Photo
                   </FormLabel>
                   <Flex alignItems="center" mt={1}>
                     <Avatar
                       boxSize={12}
-                      bg={useColorModeValue("gray.100", "gray.800")}
+                      bg={useColorModeValue('gray.100', 'gray.800')}
                       icon={
-                      <Icon
-                        as={FaUser}
-                        boxSize={9}
-                        mt={3}
-                        rounded="full"
-                        color={useColorModeValue("gray.300", "gray.700")}
-                      />
+                        <Icon
+                          as={FaUser}
+                          boxSize={9}
+                          mt={3}
+                          rounded="full"
+                          color={useColorModeValue('gray.300', 'gray.700')}
+                        />
                       }
                     />
                     <Button
@@ -128,7 +120,7 @@ export default function NewPlaytest() {
                       variant="outline"
                       size="sm"
                       fontWeight="medium"
-                      _focus={{ shadow: "none" }}
+                      _focus={{ shadow: 'none' }}
                     >
                       Change
                     </Button>
@@ -139,7 +131,7 @@ export default function NewPlaytest() {
                   <FormLabel
                     fontSize="sm"
                     fontWeight="md"
-                    color={useColorModeValue("gray.700", "gray.50")}
+                    color={useColorModeValue('gray.700', 'gray.50')}
                   >
                     Game Build File
                   </FormLabel>
@@ -150,7 +142,7 @@ export default function NewPlaytest() {
                     pt={5}
                     pb={6}
                     borderWidth={2}
-                    borderColor={useColorModeValue("gray.300", "gray.500")}
+                    borderColor={useColorModeValue('gray.300', 'gray.500')}
                     borderStyle="dashed"
                     rounded="md"
                   >
@@ -158,22 +150,22 @@ export default function NewPlaytest() {
                       <Icon
                         mx="auto"
                         boxSize={12}
-                        color={useColorModeValue("gray.400", "gray.500")}
+                        color={useColorModeValue('gray.400', 'gray.500')}
                         stroke="currentColor"
                         fill="none"
                         viewBox="0 0 48 48"
                         aria-hidden="true"
                       >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </Icon>
                       <Flex
                         fontSize="sm"
-                        color={useColorModeValue("gray.600", "gray.400")}
+                        color={useColorModeValue('gray.600', 'gray.400')}
                         alignItems="baseline"
                       >
                         <chakra.label
@@ -181,26 +173,26 @@ export default function NewPlaytest() {
                           cursor="pointer"
                           rounded="md"
                           fontSize="md"
-                          color={useColorModeValue("brand.600", "brand.200")}
+                          color={useColorModeValue('brand.600', 'brand.200')}
                           pos="relative"
                           _hover={{
-                          color: useColorModeValue("brand.400", "brand.300"),
+                            color: useColorModeValue('brand.400', 'brand.300'),
                           }}
                         >
                           <span>Upload a file</span>
                           <VisuallyHidden>
-                          <input
-                            id="file-upload"
-                            name="file-upload"
-                            type="file"
-                          />
+                            <input
+                              id="file-upload"
+                              name="file-upload"
+                              type="file"
+                            />
                           </VisuallyHidden>
                         </chakra.label>
                         <Text pl={1}>or drag and drop</Text>
                       </Flex>
                       <Text
-                      fontSize="xs"
-                      color={useColorModeValue("gray.500", "gray.50")}
+                        fontSize="xs"
+                        color={useColorModeValue('gray.500', 'gray.50')}
                       >
                         .zip or .rar file
                       </Text>
@@ -208,16 +200,12 @@ export default function NewPlaytest() {
                   </Flex>
                 </FormControl>
                 <Box
-                px={{ base: 4, sm: 6 }}
-                py={3}
-                bg={useColorModeValue("gray.50", "gray.900")}
-                textAlign="right"
+                  px={{ base: 4, sm: 6 }}
+                  py={3}
+                  bg={useColorModeValue('gray.50', 'gray.900')}
+                  textAlign="right"
                 >
-                  <Button
-                    type="submit"
-                    _focus={{ shadow: "" }}
-                    fontWeight="md"
-                  >
+                  <Button type="submit" _focus={{ shadow: '' }} fontWeight="md">
                     Save
                   </Button>
                 </Box>
@@ -228,4 +216,6 @@ export default function NewPlaytest() {
       </Grid>
     </Box>
   );
-}
+};
+
+export default NewPlaytest;
