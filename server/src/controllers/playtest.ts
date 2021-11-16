@@ -10,7 +10,7 @@ export const createPlaytest: RequestHandler = async (
 
   const savedPlaytest = await newPlaytest.save().then((_res) => {
     // Attach the playtest to it's User on creation
-    User.findOne({ userName: newPlaytest.userName }, (_e: any, user: any) => {
+    User.findOne({ username: newPlaytest.username }, (_e: any, user: any) => {
       if (user) {
         user.playtests.push(newPlaytest);
         user.save();

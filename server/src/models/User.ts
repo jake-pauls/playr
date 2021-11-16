@@ -3,7 +3,7 @@ import User from '../types/User';
 
 const userSchema = new Schema<User>(
   {
-    userName: { type: String, required: true, index: true },
+    username: { type: String, required: true, index: true },
     playtests: [
       {
         type: Schema.Types.ObjectId,

@@ -3,7 +3,7 @@ import Playtest from '../types/Playtest';
 
 const playtestSchema = new Schema<Playtest>(
   {
-    userName: { type: String, required: true },
+    username: { type: String, required: true },
     gameName: { type: String, required: true },
     instructions: { type: String, required: true },
     startDate: {
@@ -12,6 +12,7 @@ const playtestSchema = new Schema<Playtest>(
       required: true,
     },
     endDate: { type: Date, required: true },
+    status: String,
     aesthetics: [{ type: String }],
     buildLink: String,
     buildUpload: { type: Buffer, contentType: String },
