@@ -7,6 +7,7 @@ export const createPlaytest: RequestHandler = async (
   res: Response
 ) => {
   const newPlaytest = new Playtest(req.body);
+  newPlaytest.status = 'ongoing';
 
   const savedPlaytest = await newPlaytest.save().then((_res) => {
     // Attach the playtest to it's User on creation
@@ -17,6 +18,7 @@ export const createPlaytest: RequestHandler = async (
       }
     });
   });
+
   res.json(savedPlaytest);
 };
 
