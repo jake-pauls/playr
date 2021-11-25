@@ -8,6 +8,6 @@ describe('landing page test', () => {
   });
 
   it('contains the home text', async () => {
-    await expect(page).toMatch('Home');
+    await expect(page).toMatch('Playr.');
   });
 });

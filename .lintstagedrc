@@ -1,0 +1,3 @@
+{
+  "client/src/**/*.js": "eslint client/src/**/*.js -c client/.eslintrc.json --fix"
+}

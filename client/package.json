@@ -16,7 +16,12 @@
     "react-scripts": "^4.0.3"
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^19.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest-puppeteer": "^6.0.0",
+    "prettier": "^2.4.1",
     "puppeteer": "^11.0.0"
   },
   "scripts": {
@@ -25,13 +30,8 @@
     "test:e2e": "jest -c e2e/jest.config.js --maxWorkers=2",
     "test:unit": "react-scripts test --env=jsdom",
     "test:coverage": "react-scripts test --coverage .",
+    "lint": "eslint src/**/*.js",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "development": [

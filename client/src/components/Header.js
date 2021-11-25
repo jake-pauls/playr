@@ -18,6 +18,8 @@ import { AiOutlineSearch, AiFillBell } from 'react-icons/ai';
 const Header = (props) => {
   const bg = useColorModeValue('white', 'gray.800');
 
+  const { name } = props;
+
   return (
     <chakra.header
       bg={bg}
@@ -30,16 +32,15 @@ const Header = (props) => {
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
         <HStack spacing={3} alignItems="center">
           <Heading size="md" fontFamily="Raleway">
-            {props.name}
+            {name}
           </Heading>
         </HStack>
         <HStack>
           <HStack spacing={3} alignItems="center">
             <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<AiOutlineSearch />}
-              />
+              <InputLeftElement pointerEvents="none">
+                <AiOutlineSearch />
+              </InputLeftElement>
               <Input type="tel" placeholder="Search..." />
             </InputGroup>
           </HStack>

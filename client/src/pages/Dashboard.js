@@ -1,7 +1,10 @@
+import React from 'react';
 import { Grid, GridItem, Button, Flex, Box, Heading } from '@chakra-ui/react';
 import PageLayout from '../layouts/PageLayout';
 
 const Dashboard = (props) => {
+  const { completed, ongoing, open, onhold } = props;
+
   return (
     <PageLayout title="Dashboard">
       <Flex flexDirection="column">
@@ -16,7 +19,7 @@ const Dashboard = (props) => {
             <Button w="full" h="full" py={10}>
               <Flex flexDir="column">
                 <Box mb={5}>Completed</Box>
-                <Box>15{props.completed}</Box>
+                <Box>15{completed}</Box>
               </Flex>
             </Button>
           </GridItem>
@@ -24,7 +27,7 @@ const Dashboard = (props) => {
             <Button w="full" h="full" py={10}>
               <Flex flexDir="column">
                 <Box mb={5}>Ongoing</Box>
-                <Box>15{props.ongoing}</Box>
+                <Box>15{ongoing}</Box>
               </Flex>
             </Button>
           </GridItem>
@@ -32,7 +35,7 @@ const Dashboard = (props) => {
             <Button w="full" h="full" py={10}>
               <Flex flexDir="column">
                 <Box mb={5}>Open</Box>
-                <Box>15{props.open}</Box>
+                <Box>15{open}</Box>
               </Flex>
             </Button>
           </GridItem>
@@ -40,7 +43,7 @@ const Dashboard = (props) => {
             <Button w="full" h="full" py={10}>
               <Flex flexDir="column">
                 <Box mb={5}>On Hold</Box>
-                <Box>15{props.onhold}</Box>
+                <Box>15{onhold}</Box>
               </Flex>
             </Button>
           </GridItem>
@@ -56,22 +59,13 @@ const Dashboard = (props) => {
           borderColor="gray.600"
           borderWidth={1}
         >
-          {/* Graph
-           *
-           *
-           *
-           *
-           *
-           *
-           *
-           */}
           <GridItem
             id="graph"
             colSpan={3}
             rowSpan={5}
             borderColor="gray.600"
             borderRightWidth={1}
-          ></GridItem>
+          />
           <GridItem
             colSpan={1}
             rowSpan={1}
@@ -85,7 +79,7 @@ const Dashboard = (props) => {
               h="full"
             >
               <Box>Total Testers</Box>
-              <Heading size>15{/*props.totalTesters*/}</Heading>
+              <Heading size>15</Heading>
             </Flex>
           </GridItem>
           <GridItem
@@ -101,7 +95,7 @@ const Dashboard = (props) => {
               h="full"
             >
               <Box>Total Likes</Box>
-              <Heading size>15{/*props.totalLikes*/}</Heading>
+              <Heading size>15</Heading>
             </Flex>
           </GridItem>
           <GridItem
@@ -117,7 +111,7 @@ const Dashboard = (props) => {
               h="full"
             >
               <Box>Average Play Time</Box>
-              <Heading size>15{/*props.avgPlayTime + "m"*/}</Heading>
+              <Heading size>15</Heading>
             </Flex>
           </GridItem>
           <GridItem
@@ -133,7 +127,7 @@ const Dashboard = (props) => {
               h="full"
             >
               <Box>Average Response Time</Box>
-              <Heading size>15{/*props.avgResTime+ "m"*/}</Heading>
+              <Heading size>15</Heading>
             </Flex>
           </GridItem>
           <GridItem colSpan={1} rowSpan={1} borderColor="gray.600">
@@ -144,7 +138,7 @@ const Dashboard = (props) => {
               h="full"
             >
               <Box>Completion Rate</Box>
-              <Heading size>15{/*props.compRate*/}</Heading>
+              <Heading size>15</Heading>
             </Flex>
           </GridItem>
         </Grid>
@@ -152,4 +146,5 @@ const Dashboard = (props) => {
     </PageLayout>
   );
 };
+
 export default Dashboard;

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Flex,
@@ -11,6 +12,8 @@ import {
 import { AiFillPieChart, AiOutlineTeam, AiFillSetting } from 'react-icons/ai';
 
 const Navbar = (props) => {
+  const { navIndex } = props;
+
   return (
     <Flex bg="base.black" color="base.grey" direction="column" h="full">
       <Flex alignItems="center">
@@ -26,7 +29,7 @@ const Navbar = (props) => {
         <Heading fontFamily="Raleway">Playr.</Heading>
       </Flex>
       <Tabs
-        defaultIndex={props.navIndex}
+        defaultIndex={navIndex}
         orientation="vertical"
         borderColor="base.grey"
         colorScheme="green"
