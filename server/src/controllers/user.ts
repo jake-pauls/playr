@@ -1,11 +1,11 @@
 import { RequestHandler, Request, Response } from 'express';
-import User from '../models/User';
+import UserModel from '../models/User';
 
 export const createUser: RequestHandler = async (
   req: Request,
   res: Response
 ) => {
-  const newUser = new User(req.body);
+  const newUser = new UserModel(req.body);
 
   const savedUser = await newUser.save();
   res.json(savedUser);
@@ -15,7 +15,9 @@ export const getUserById: RequestHandler = async (
   req: Request,
   res: Response
 ) => {
-  const userFound = await User.findById(req.params.id).populate('playtests');
+  const userFound = await UserModel.findById(req.params.id).populate(
+    'playtests'
+  );
 
   if (!userFound) return res.status(204).json();
 
@@ -29,7 +31,7 @@ export const getUsers: RequestHandler = async (
   let users;
 
   try {
-    users = await User.find();
+    users = await UserModel.find();
   } catch (err) {
     res.json(err);
   }
@@ -41,7 +43,7 @@ export const deleteUser: RequestHandler = async (
   req: Request,
   res: Response
 ) => {
-  const userFound = await User.findByIdAndDelete(req.params.id);
+  const userFound = await UserModel.findByIdAndDelete(req.params.id);
 
   if (!userFound) return res.status(204).json();
 
@@ -52,9 +54,13 @@ export const updateUser: RequestHandler = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const userUpdated = await User.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  const userUpdated = await UserModel.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
 
   if (!userUpdated) return res.status(204).json();
 
