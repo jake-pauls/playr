@@ -1,6 +1,22 @@
 version: '3.8'
 
 services:
+  # LOAD BALANCER
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    links:
+      - client
+      - server
+    depends_on:
+      - client
+      - server
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - '8000:80'
+
   # CLIENT
   client:
     build: ./client
@@ -24,20 +40,6 @@ services:
       - mongo
     depends_on:
       - mongo
-
-  # LOAD BALANCER
-  nginx:
-    build: ./nginx
-    container_name: nginx
-    restart: always
-    links:
-      - client
-      - server
-    depends_on:
-      - client
-      - server
-    ports:
-      - '8000:80'
 
   # MONGO
   mongo:
