@@ -25,6 +25,20 @@ services:
     depends_on:
       - mongo
 
+  # LOAD BALANCER
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    links:
+      - client
+      - server
+    depends_on:
+      - client
+      - server
+    ports:
+      - '8000:80'
+
   # MONGO
   mongo:
     container_name: mongo

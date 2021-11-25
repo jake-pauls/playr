@@ -1,11 +1,9 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-import { apiBaseUrl } from '../utils';
-
 // Playtests
 const fetchPlaytests = async () => {
-  let { data: playtests } = await axios.get(`${apiBaseUrl}/playtests`);
+  let { data: playtests } = await axios.get('/api/playtests');
 
   playtests = playtests.sort((a, b) => {
     return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
@@ -19,7 +17,7 @@ export const QueryPlaytests = (options = {}) => {
 };
 
 const createPlaytest = async (body) => {
-  let { data: response } = await axios.post(`${apiBaseUrl}/playtests`, body);
+  let { data: response } = await axios.post('/api/playtests', body);
 
   return response;
 };

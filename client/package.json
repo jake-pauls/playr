@@ -22,8 +22,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest -c test/jest.config.js --maxWorkers=2",
-    "test:src": "react-scripts test --env=puppeteer",
+    "test:e2e": "jest -c e2e/jest.config.js --maxWorkers=2",
+    "test:unit": "react-scripts test --env=jsdom",
+    "test:coverage": "react-scripts test --coverage .",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
