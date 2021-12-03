@@ -52,6 +52,7 @@ const Home = () => {
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
               <Button
+                className="hero-button"
                 rounded="full"
                 bg="base.primary"
                 color="base.background"

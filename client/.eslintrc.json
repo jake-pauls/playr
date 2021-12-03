@@ -8,12 +8,10 @@
   ],
   "plugins": ["jsx-a11y", "prettier"],
   "rules": {
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      { "requireReturnForObjectLiteral": true }
-    ],
+    "arrow-body-style": ["error", "as-needed"],
     "func-names": 0,
+    "no-import-assign": 0,
+    "no-plusplus": 0,
     "no-underscore-dangle": 0,
     "semi": 2,
     "import/prefer-default-export": 0,
@@ -24,5 +22,12 @@
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": [1, { "skipUndeclared": true }]
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "jestPuppeteer": true,
+    "testingURL": true
   }
 }

@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   chakra,
   Box,
+  Button,
   Flex,
-  useColorModeValue,
-  SimpleGrid,
   GridItem,
-  Text,
-  Stack,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
-  Textarea,
-  Icon,
-  Button,
-  VisuallyHidden,
   InputLeftAddon,
+  Icon,
+  VisuallyHidden,
+  SimpleGrid,
+  Stack,
+  Textarea,
+  Text,
+  useColorModeValue,
+  useToast,
 } from '@chakra-ui/react';
 
 import PageLayout from '../layouts/PageLayout';
@@ -42,17 +44,50 @@ const NewPlaytest = () => {
     buildUpload,
   });
 
+  const areRequiredFieldsFilled =
+    gameName === '' ||
+    instructions === '' ||
+    startDate === '' ||
+    endDate === '' ||
+    buildLink === '';
+
+  const toast = useToast();
+  const navigate = useNavigate();
+
   return (
     <PageLayout title="New Playtest">
       <chakra.form
         method="POST"
         shadow="base"
+        name="newPlaytest"
         rounded={[null, 'md']}
         overflow={{ sm: 'hidden' }}
         encType="multipart/form-data"
         onSubmit={(e) => {
           e.preventDefault();
-          sendPlaytest();
+
+          if (areRequiredFieldsFilled) {
+            toast({
+              title: 'Missing required fields',
+              description: 'Please fill in the required fields and try again',
+              status: 'error',
+              duration: 8000,
+              isClosable: true,
+            });
+          } else {
+            sendPlaytest();
+
+            navigate('../playtest');
+
+            toast({
+              title: 'Successfully created playtest',
+              description:
+                "Ongoing playtests can be viewed in the 'Playtests' tab",
+              status: 'success',
+              duration: 8000,
+              isClosable: true,
+            });
+          }
         }}
       >
         <Stack
@@ -63,22 +98,21 @@ const NewPlaytest = () => {
           p={{ sm: 6 }}
         >
           <SimpleGrid columns={3} spacing={6}>
-            <FormControl
-              as={GridItem}
-              colSpan={[3, 2]}
-              isRequired
-              id="game_name"
-            >
+            <FormControl as={GridItem} colSpan={[3, 2]} id="game_name">
               <FormLabel
                 fontSize="sm"
                 fontWeight="md"
                 color={useColorModeValue('gray.700', 'gray.50')}
               >
-                Game Name
+                Game Name{' '}
+                <Text color="red" as="span">
+                  *
+                </Text>
               </FormLabel>
               <InputGroup size="sm">
                 <Input
                   type="text"
+                  name="gameName"
                   placeholder="Enter an amazing game name"
                   focusBorderColor="brand.400"
                   rounded="md"
@@ -88,16 +122,20 @@ const NewPlaytest = () => {
             </FormControl>
           </SimpleGrid>
           <div>
-            <FormControl id="instruction" mt={1} isRequired>
+            <FormControl id="instruction" mt={1}>
               <FormLabel
                 fontSize="sm"
                 fontWeight="md"
                 color={useColorModeValue('gray.700', 'gray.50')}
               >
                 Playtest Instructions
+                <Text color="red" as="span">
+                  *
+                </Text>
               </FormLabel>
               <Textarea
                 placeholder="Write some instructions for users who playtest your game"
+                name="instructions"
                 mt={1}
                 rows={10}
                 shadow="sm"
@@ -107,7 +145,7 @@ const NewPlaytest = () => {
               />
             </FormControl>
           </div>
-          <FormControl id="start_end_date" isRequired>
+          <FormControl id="start_end_date">
             <SimpleGrid columns={3} spacing={6}>
               <Box>
                 <FormLabel
@@ -116,10 +154,14 @@ const NewPlaytest = () => {
                   color={useColorModeValue('gray.700', 'gray.50')}
                 >
                   Start Date
+                  <Text color="red" as="span">
+                    *
+                  </Text>
                 </FormLabel>
                 <InputGroup>
                   <Input
                     type="date"
+                    name="startDate"
                     focusBorderColor="brand.400"
                     rounded="md"
                     onChange={(e) => setStartDate(e.target.value)}
@@ -133,10 +175,14 @@ const NewPlaytest = () => {
                   color={useColorModeValue('gray.700', 'gray.50')}
                 >
                   End Date
+                  <Text color="red" as="span">
+                    *
+                  </Text>
                 </FormLabel>
                 <InputGroup>
                   <Input
                     type="date"
+                    name="endDate"
                     focusBorderColor="brand.400"
                     rounded="md"
                     onChange={(e) => setEndDate(e.target.value)}
@@ -155,6 +201,7 @@ const NewPlaytest = () => {
             </FormLabel>
             <Input
               type="search"
+              name="aesthetics"
               placeholder="ie: 'Challenge', 'Discovery', 'Submission', etc."
               onChange={(e) => setAesthetics(e.target.value)}
             />
@@ -166,11 +213,15 @@ const NewPlaytest = () => {
               color={useColorModeValue('gray.700', 'gray.50')}
             >
               Build Link (GitHub, Itch.io, or Drive)
+              <Text color="red" as="span">
+                *
+              </Text>
             </FormLabel>
             <InputGroup size="sm">
               <InputLeftAddon>https://</InputLeftAddon>
               <Input
                 placeholder="github.com/user/game"
+                name="buildLink"
                 onChange={(e) => setBuildLink(e.target.value)}
               />
             </InputGroup>

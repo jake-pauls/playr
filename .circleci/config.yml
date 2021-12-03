@@ -93,6 +93,30 @@ jobs:
           path: /client/coverage/lcov.info
           prefix: tests
 
+  server-build:
+    docker:
+      - image: 'circleci/node:16.13.0'
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - server-deps-{{ checksum "server/package.json" }}
+            - server-deps-
+
+      - run:
+          name: Install Required Dependencies
+          command: cd server && yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: server-deps-{{ checksum "server/package.json" }}
+
+      - run:
+          name: Run Server Build
+          command: cd server && yarn build
+
 workflows:
   playr-ci:
     jobs:
@@ -103,6 +127,10 @@ workflows:
       - client-test:
           requires:
             - client-build
+          filters:
+            branches:
+              only: main
+      - server-build:
           filters:
             branches:
               only: main
