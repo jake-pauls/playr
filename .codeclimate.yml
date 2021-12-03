@@ -17,13 +17,17 @@ checks:
       threshold: 20
   method-lines:
     config:
-      threshold: 25
+      threshold: 350 # Avoids unnecessarily refactoring larger components
   nested-control-flow:
     config:
       threshold: 4
   return-statements:
     config:
       threshold: 4
+  similar-code:
+    enabled: false
+  identical-code:
+    enabled: false
 plugins:
   eslint:
     enabled: true
