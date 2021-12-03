@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react';
 
-export const chakraTheme = extendTheme({
+const ChakraTheme = extendTheme({
+  fonts: {
+    heading: 'Raleway',
+    body: 'Catamaran',
+  },
   colors: {
     base: {
       primary: '#129820',
@@ -11,3 +15,5 @@ export const chakraTheme = extendTheme({
     },
   },
 });
+
+export default ChakraTheme;

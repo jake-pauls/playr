@@ -123,7 +123,7 @@ const NewPlaytest = () => {
                     focusBorderColor="brand.400"
                     rounded="md"
                     onChange={(e) => setStartDate(e.target.value)}
-                  ></Input>
+                  />
                 </InputGroup>
               </Box>
               <Box>
@@ -140,7 +140,7 @@ const NewPlaytest = () => {
                     focusBorderColor="brand.400"
                     rounded="md"
                     onChange={(e) => setEndDate(e.target.value)}
-                  ></Input>
+                  />
                 </InputGroup>
               </Box>
             </SimpleGrid>
@@ -157,7 +157,7 @@ const NewPlaytest = () => {
               type="search"
               placeholder="ie: 'Challenge', 'Discovery', 'Submission', etc."
               onChange={(e) => setAesthetics(e.target.value)}
-            ></Input>
+            />
           </FormControl>
           <FormControl id="build">
             <FormLabel
@@ -168,7 +168,7 @@ const NewPlaytest = () => {
               Build Link (GitHub, Itch.io, or Drive)
             </FormLabel>
             <InputGroup size="sm">
-              <InputLeftAddon children="https://" />
+              <InputLeftAddon>https://</InputLeftAddon>
               <Input
                 placeholder="github.com/user/game"
                 onChange={(e) => setBuildLink(e.target.value)}

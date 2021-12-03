@@ -1,44 +1,10 @@
-import {
-  Badge,
-  Box,
-  Heading,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-} from '@chakra-ui/react';
+import React from 'react';
+import { Box, Heading, Table, Thead, Tr, Th } from '@chakra-ui/react';
 
 import PageLayout from '../layouts/PageLayout';
 import Loading from '../components/misc/Loading';
-import PlaytestModal from '../components/PlaytestModal';
+import PlaytestTableRows from '../components/PlaytestTableRows';
 import { QueryPlaytests } from '../hooks/Queries';
-import { formatDateString } from '../utils';
-
-const PlaytestTableRows = (props) => {
-  return (
-    <Tbody>
-      {props.status === 'success'
-        ? props.playtests.map((playtest) => (
-            <Tr key={playtest._id}>
-              <Td>{playtest.gameName}</Td>
-              <Td>{playtest.username}</Td>
-              <Td>{formatDateString(playtest.updatedAt)}</Td>
-              <Td>
-                <Badge variant="solid" colorScheme="green">
-                  {playtest.status}
-                </Badge>
-              </Td>
-              <Td>
-                <PlaytestModal playtest={playtest} />
-              </Td>
-            </Tr>
-          ))
-        : ''}
-    </Tbody>
-  );
-};
 
 const Playtest = () => {
   const {
@@ -46,8 +12,6 @@ const Playtest = () => {
     data: playtests,
     status: playtestsCallStatus,
   } = QueryPlaytests();
-
-  console.log(playtests);
 
   if (loading) {
     return (

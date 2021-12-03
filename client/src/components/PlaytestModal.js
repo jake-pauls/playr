@@ -1,10 +1,9 @@
+import React from 'react';
 import {
-  Badge,
   Box,
   Button,
   Flex,
   Heading,
-  HStack,
   Link,
   Modal,
   ModalOverlay,
@@ -19,27 +18,22 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
+import AestheticsBadges from './AestheticBadges';
 import { formatDateString } from '../utils';
-
-const AestheticsBadges = (props) => {
-  return (
-    <Flex direction="column">
-      <Text fontWeight="bold" mb={1}>
-        Aesthetics
-      </Text>
-      <HStack>
-        {props.playtest.aesthetics.map((a) => (
-          <Badge key={a} colorScheme="blue" variant="outline">
-            {a}
-          </Badge>
-        ))}
-      </HStack>
-    </Flex>
-  );
-};
 
 const PlaytestModal = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const playtest = props;
+  const {
+    gameName,
+    username,
+    instructions,
+    buildLink,
+    startDate,
+    endDate,
+    updatedAt,
+  } = playtest;
 
   return (
     <>
@@ -47,7 +41,7 @@ const PlaytestModal = (props) => {
       <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{props.playtest.gameName}</ModalHeader>
+          <ModalHeader>{gameName}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack>
@@ -58,20 +52,20 @@ const PlaytestModal = (props) => {
                 <Flex>
                   <Text fontWeight="bold">Created By</Text>
                   <Spacer />
-                  <Text>{props.playtest.username} </Text>
+                  <Text>{username} </Text>
                 </Flex>
                 <Flex direction="column">
                   <Text fontWeight="bold" mb={1}>
                     Instructions
                   </Text>
-                  <Text>{props.playtest.instructions} </Text>
+                  <Text>{instructions} </Text>
                 </Flex>
                 <Flex>
                   <Text fontWeight="bold">Build Link</Text>
                   <Spacer />
-                  <Link>{props.playtest.buildLink}</Link>
+                  <Link>{buildLink}</Link>
                 </Flex>
-                <AestheticsBadges playtest={props.playtest} />
+                <AestheticsBadges playtest={playtest} />
               </Stack>
               <Box m={4}>
                 <Heading size="md" mb={2}>
@@ -81,17 +75,17 @@ const PlaytestModal = (props) => {
                   <Text fontWeight="bold" mr={4}>
                     Start Date
                   </Text>
-                  <Text>{formatDateString(props.playtest.startDate)}</Text>
+                  <Text>{formatDateString(startDate)}</Text>
                   <Spacer />
                   <Text fontWeight="bold" mr={4}>
                     End Date
                   </Text>
-                  <Text>{formatDateString(props.playtest.endDate)}</Text>
+                  <Text>{formatDateString(endDate)}</Text>
                 </Flex>
                 <Flex>
                   <Text fontWeight="bold">Last Updated</Text>
                   <Spacer />
-                  <Text>{formatDateString(props.playtest.updatedAt)}</Text>
+                  <Text>{formatDateString(updatedAt)}</Text>
                 </Flex>
               </Box>
             </Stack>

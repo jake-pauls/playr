@@ -1,5 +1,3 @@
-import { Schema } from 'mongoose';
-
 export default interface Playtest {
   username: string;
   gameName: string;
@@ -9,5 +7,5 @@ export default interface Playtest {
   status: string;
   aesthetics?: string[];
   buildLink?: string;
-  buildUpload?: Object;
+  buildUpload?: unknown;
 }

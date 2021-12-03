@@ -1,6 +1,7 @@
 import { RequestHandler, Request, Response } from 'express';
-import User from '../models/User';
+import UserModel from '../models/User';
 import Playtest from '../models/Playtest';
+import User from '../types/User';
 
 export const createPlaytest: RequestHandler = async (
   req: Request,
@@ -9,14 +10,17 @@ export const createPlaytest: RequestHandler = async (
   const newPlaytest = new Playtest(req.body);
   newPlaytest.status = 'ongoing';
 
-  const savedPlaytest = await newPlaytest.save().then((_res) => {
+  const savedPlaytest = await newPlaytest.save().then(() => {
     // Attach the playtest to it's User on creation
-    User.findOne({ username: newPlaytest.username }, (_e: any, user: any) => {
-      if (user) {
-        user.playtests.push(newPlaytest);
-        user.save();
+    UserModel.findOne(
+      { username: newPlaytest.username },
+      (_e: unknown, user: User) => {
+        if (user) {
+          user.playtests?.push(newPlaytest);
+          user.save();
+        }
       }
-    });
+    );
   });
 
   res.json(savedPlaytest);

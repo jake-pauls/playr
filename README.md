@@ -1,5 +1,16 @@
 # playr
 
+## Client
+
+### Environment Configuration
+
+1. Create a `.env` file in the `/client` directory
+2. In the `.env` file add the followign variables
+
+```
+HEADLESS=       # 'true' or 'false', indicates whether UI tests should be run in a browser
+```
+
 ## Server
 
 ### Environment Configuration

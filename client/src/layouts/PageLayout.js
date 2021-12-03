@@ -1,8 +1,12 @@
-import { GridItem, Box, Grid, Flex } from '@chakra-ui/layout';
+import React from 'react';
+import { GridItem, Box, Grid, Flex } from '@chakra-ui/react';
+
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 
 const PageLayout = (props) => {
+  const { title, children } = props;
+
   return (
     <Box h="100%">
       <Grid
@@ -15,8 +19,8 @@ const PageLayout = (props) => {
         </GridItem>
         <GridItem rowSpan={1} colSpan={8}>
           <Flex direction="column" m={0} w="full">
-            <Header name={props.title} />
-            {props.children}
+            <Header name={title} />
+            {children}
           </Flex>
         </GridItem>
       </Grid>

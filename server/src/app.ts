@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Test Endpoint
-app.route('/ping').get((_req: Request, _res: Response) => {
+app.route('/api/ping').get((_req: Request, _res: Response) => {
   _res.status(200).send({ ping: 'pong' });
 });
 
