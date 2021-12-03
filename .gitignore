@@ -4,6 +4,7 @@ logs
 **/*.backup.*
 **/*.back.*
 node_modules/
+test-results.xml
 
 # ts
 dist/
