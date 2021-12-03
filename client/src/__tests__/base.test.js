@@ -10,4 +10,8 @@ describe('base', () => {
   test('understanding', () => {
     expect(2).toBe(2);
   });
+
+  test('comprehension', () => {
+    expect('a').toBe('a');
+  });
 });

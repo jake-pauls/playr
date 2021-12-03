@@ -47,6 +47,7 @@ const NewPlaytest = () => {
       <chakra.form
         method="POST"
         shadow="base"
+        name="newPlaytest"
         rounded={[null, 'md']}
         overflow={{ sm: 'hidden' }}
         encType="multipart/form-data"
@@ -79,6 +80,7 @@ const NewPlaytest = () => {
               <InputGroup size="sm">
                 <Input
                   type="text"
+                  name="gameName"
                   placeholder="Enter an amazing game name"
                   focusBorderColor="brand.400"
                   rounded="md"
@@ -98,6 +100,7 @@ const NewPlaytest = () => {
               </FormLabel>
               <Textarea
                 placeholder="Write some instructions for users who playtest your game"
+                name="instructions"
                 mt={1}
                 rows={10}
                 shadow="sm"
@@ -120,6 +123,7 @@ const NewPlaytest = () => {
                 <InputGroup>
                   <Input
                     type="date"
+                    name="startDate"
                     focusBorderColor="brand.400"
                     rounded="md"
                     onChange={(e) => setStartDate(e.target.value)}
@@ -137,6 +141,7 @@ const NewPlaytest = () => {
                 <InputGroup>
                   <Input
                     type="date"
+                    name="endDate"
                     focusBorderColor="brand.400"
                     rounded="md"
                     onChange={(e) => setEndDate(e.target.value)}
@@ -155,6 +160,7 @@ const NewPlaytest = () => {
             </FormLabel>
             <Input
               type="search"
+              name="aesthetics"
               placeholder="ie: 'Challenge', 'Discovery', 'Submission', etc."
               onChange={(e) => setAesthetics(e.target.value)}
             />
@@ -171,6 +177,7 @@ const NewPlaytest = () => {
               <InputLeftAddon>https://</InputLeftAddon>
               <Input
                 placeholder="github.com/user/game"
+                name="buildLink"
                 onChange={(e) => setBuildLink(e.target.value)}
               />
             </InputGroup>

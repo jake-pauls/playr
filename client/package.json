@@ -29,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test:e2e": "jest -c e2e/jest.config.js --maxWorkers=2",
+    "test:e2e:watch": "jest -c e2e/jest.config.js --maxWorkers=2 --watch",
     "test:unit": "react-scripts test --env=jsdom .",
+    "test:unit:watch": "react-scripts test --env=jsdom --watch .",
     "cover": "react-scripts test --coverage .",
     "lint": "eslint src/**/*.js",
     "eject": "react-scripts eject"
