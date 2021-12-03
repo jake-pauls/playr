@@ -8,4 +8,5 @@ module.exports = {
     '\\.js$': 'react-scripts/config/jest/babelTransform',
   },
   reporters: ['default', ['jest-junit', { outputName: 'test-results.xml' }]],
+  setupFilesAfterEnv: ['./jest.setup.js'],
 };

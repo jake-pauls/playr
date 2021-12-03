@@ -80,7 +80,7 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             cd client && yarn cover 
-            ./cc-test-reporter after-build
+            ../cc-test-reporter after-build
           when: always
 
       # Store Test Results
