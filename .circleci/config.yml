@@ -54,14 +54,44 @@ jobs:
           name: Install Required Dependencies
           command: cd client && yarn install
 
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+          when: always
+
       - save_cache:
           paths:
             - node_modules
           key: client-deps-{{ checksum "client/package.json" }}
 
+      # Run Tests (unit/e2e)
+      - run:
+          name: Run Unit Tests
+          command: cd client && yarn test:unit
+
       - run:
           name: Run Jest/Puppeteer Tests
-          command: cd client && yarn test
+          command: cd client && yarn test:e2e
+
+      - run:
+          name: Generate Code Coverage Report and Send to Code Climate
+          command: |
+            ./cc-test-reporter before-build
+            cd client && yarn cover 
+            ./cc-test-reporter after-build
+          when: always
+
+      # Store Test Results
+      - store_artifacts:
+          path: /client/test-results.xml
+          prefix: tests
+
+      # Store Code Coverage Report (Istanbul)
+      - store_artifacts:
+          path: /client/coverage/lcov.info
+          prefix: tests
 
 workflows:
   playr-ci:

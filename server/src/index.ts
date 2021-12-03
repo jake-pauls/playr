@@ -10,7 +10,7 @@ const main = async () => {
 
   try {
     await mongoose.connect(`mongodb://${process.env.MONGO_HOST}:27017/playr`);
-    console.log(`Successfully connected to MongoDB!`);
+    console.log('Successfully connected to MongoDB!');
   } catch (err) {
     console.log(err);
   }

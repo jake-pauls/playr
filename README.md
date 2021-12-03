@@ -5,10 +5,11 @@
 ### Environment Configuration
 
 1. Create a `.env` file in the `/client` directory
-2. In the `.env` file add the followign variables
+2. In the `.env` file add the following variables
 
 ```
-HEADLESS=       # 'true' or 'false', indicates whether UI tests should be run in a browser
+SKIP_PREFLIGHT_CHECK=true   # Resolves some issues with eslint 7.11.0 in CRA
+HEADLESS=                   # 'true' or 'false', indicates whether UI tests should be run in a browser
 ```
 
 ## Server
