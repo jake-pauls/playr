@@ -6,7 +6,7 @@ module.exports = {
     debug: true,
   },
   launch: {
-    headless: false,
+    headless: process.env.HEADLESS !== 'false',
   },
   browserContext: 'default',
 };
