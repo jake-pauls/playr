@@ -8,12 +8,9 @@
   ],
   "plugins": ["jsx-a11y", "prettier"],
   "rules": {
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      { "requireReturnForObjectLiteral": true }
-    ],
+    "arrow-body-style": ["error", "as-needed"],
     "func-names": 0,
+    "no-import-assign": 0,
     "no-plusplus": 0,
     "no-underscore-dangle": 0,
     "semi": 2,

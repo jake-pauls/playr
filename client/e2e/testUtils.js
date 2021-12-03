@@ -1,7 +1,7 @@
 /**
  * Generates a random date between two dates and formats it to the local date string
- * @param {string} start
- * @param {string} end
+ * @param {Date} start
+ * @param {Date} end
  * @returns
  */
 export const getRandomFormattedDate = (
